@@ -3,8 +3,8 @@
 
 ## Developers
 
-Sanket Chaudhary
+[Sanket Chaudhary](https://github.com/sanket190/)
 
-Rushikesh Kundkar
+[Rushikesh Kundkar](https://github.com/RRkundkar777)
 
-Sagar Patil
+[Sagar Patil](https://github.com/sagargpatil62/)
