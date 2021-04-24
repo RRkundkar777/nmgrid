@@ -213,14 +213,15 @@ class Game(tk.Frame):
     # add_new_tile Function
     # This function wiil add a new 2 or 4 tile randomly to an empty cell
     def add_new_tile(self):
-        row = random.randint(0, 3)
-        col = random.randint(0, 3)
-        # Randomly Searching for an empty cell
-        while (self.matrix[row][col] != 0):
+        if any(0 in row for row in self.matrix):
             row = random.randint(0, 3)
             col = random.randint(0, 3)
-        # Assigning the value 2 or 4 at that random cell
-        self.matrix[row][col] = random.choice([2, 4])  
+            # Randomly Searching for an empty cell
+            while (self.matrix[row][col] != 0):
+                row = random.randint(0, 3)
+                col = random.randint(0, 3)
+            # Assigning the value 2 or 4 at that random cell
+            self.matrix[row][col] = random.choice([2**i for i in range(1,10)])  
 
 
     # Update GUI function 
@@ -363,6 +364,10 @@ class Game(tk.Frame):
                 bg=c.LOSER_BG,
                 fg=c.GAME_OVER_FONT_COLOR,
                 font=c.GAME_OVER_FONT).pack()
+            # Storing the Score into txt file
+            with open('highscore.txt', 'a') as file:
+                file.write(str(self.score))
+                file.write("\n")
 
 
 # Driver Code
