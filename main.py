@@ -349,6 +349,11 @@ class Game(tk.Frame):
                 bg=c.WINNER_BG,
                 fg=c.GAME_OVER_FONT_COLOR,
                 font=c.GAME_OVER_FONT).pack()
+            # Storing the Score into txt file with winning text
+            with open('highscore.txt', 'a') as file:
+                file.write("Winning Score ")
+                file.write(str(self.score))
+                file.write("\n")
         # Else if no move exist --> Show Game Over
         elif not any(0 in row for row in
                      self.matrix) and not self.horizontal_move_exists() and not self.vertical_move_exists():
