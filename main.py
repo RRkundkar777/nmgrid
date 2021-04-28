@@ -13,6 +13,7 @@
 
 # Importing requires modules
 import random
+import pygame
 import tkinter as tk
 
 import color as c
@@ -48,6 +49,11 @@ class Game(tk.Frame):
         self.master.bind("<Down>", self.down)
 
         # Window must display continously
+        # Playing background Music
+        
+        pygame.mixer.init()
+        pygame.mixer.music.load("Background.mp3")
+        pygame.mixer.music.play()
         self.mainloop()
 
 # ---------------------- Function Definitions -------------------------------------------------------
@@ -87,19 +93,45 @@ class Game(tk.Frame):
         # Creating Score Frame inside MainWindow (self)
         score_frame = tk.Frame(self)
         # Placing the Score Frame
-        score_frame.place(relx=0.5, x=-2,y=45, anchor="center")
+        score_frame.place(relx=0.5, x=100,y=40, anchor="center")
         # Creating "Score" Text Label Inside score_frame
         tk.Label(
             score_frame,
             text="Score",
             font=c.SCORE_LABEL_FONT
-
         ).grid(row=0)
 
         # Creating Another Label to Display the Score (Inside Score Frame)
         self.score_label = tk.Label(score_frame, text="0", font=c.SCORE_FONT)
         self.score_label.grid(row=1)
 
+
+        # Making the High Score Header
+        # Creating High Score Frame inside MainWindow (self)
+        high_score_frame = tk.Frame(self)
+        # Placing the High Score Frame
+        high_score_frame.place(relx=0.5, x=-100,y=40, anchor="center")
+        # Creating "Score" Text Label Inside score_frame
+        tk.Label(
+            high_score_frame,
+            text="Win Score",
+            font=c.SCORE_LABEL_FONT
+        ).grid(row=0)
+
+        # Storing the Score into txt file with winning text
+        with open(c.highScore, 'r') as file:
+            highscore = 0
+            hscore = file.readline()
+            while(hscore != ''):
+                if(hscore[0] != "0"):
+                    zscore = int(hscore)
+                    if(zscore > highscore): 
+                        highscore = zscore
+                hscore = file.readline()
+
+        # Creating Another Label to Display the High Score (Inside Score Frame)
+        self.high_score_label = tk.Label(high_score_frame, text=highscore, font=c.HIGH_SCORE_FONT)
+        self.high_score_label.grid(row=1)
 
     # Start Game Function
     # This function sets value of any two random cells to '2' so that we can start our game
@@ -349,11 +381,12 @@ class Game(tk.Frame):
                 bg=c.WINNER_BG,
                 fg=c.GAME_OVER_FONT_COLOR,
                 font=c.GAME_OVER_FONT).pack()
+
             # Storing the Score into txt file with winning text
-            with open('highscore.txt', 'a') as file:
-                file.write("Winning Score ")
+            with open(c.highScore, 'a') as file:
                 file.write(str(self.score))
                 file.write("\n")
+
         # Else if no move exist --> Show Game Over
         elif not any(0 in row for row in
                      self.matrix) and not self.horizontal_move_exists() and not self.vertical_move_exists():
@@ -370,7 +403,8 @@ class Game(tk.Frame):
                 fg=c.GAME_OVER_FONT_COLOR,
                 font=c.GAME_OVER_FONT).pack()
             # Storing the Score into txt file
-            with open('highscore.txt', 'a') as file:
+            with open(c.highScore, 'a') as file:
+                file.write("0")
                 file.write(str(self.score))
                 file.write("\n")
 
