@@ -413,7 +413,8 @@ class Game(tk.Frame):
 def main():
     Game()
 
-
 # Running the Game
 if __name__ == "__main__":
+    highscorefile = open("highscore.txt","w")
+    highscorefile.close()
     main()
