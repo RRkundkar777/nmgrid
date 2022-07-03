@@ -15,7 +15,7 @@
 
 <hr />
 
-### Technologies used=
+### Technologies used
 
 - Tkinter
 - PyGame
@@ -47,6 +47,6 @@ foo@bar:~/2048$ python3 main.py --dim 8
 <hr />
 
 ### Developed by
-[Sanket Chaudhari](https://github.com/sanket190/)
-[Rushikesh Kundkar](https://github.com/RRkundkar777)
-[Sagar Patil](https://github.com/sagargpatil62/)
+[Sanket Chaudhari](https://github.com/sanket190/) <br>
+[Rushikesh Kundkar](https://github.com/RRkundkar777) <br>
+[Sagar Patil](https://github.com/sagargpatil62/) <br>
