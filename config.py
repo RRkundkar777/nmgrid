@@ -1,15 +1,23 @@
+# matrix and score file config
+highScore = "highscore.txt"
+dimension = 4
+
+# grid color config
 GRID_COLOR = "#a39489"
 EMPTY_CELL_COLOR = "#c2b3a9"
+
+# score color config
 SCORE_LABEL_FONT = ("Verdana", 20)
 SCORE_FONT = ("Helvetica", 20, "bold")
+HIGH_SCORE_FONT = ("Helvetica",20,"bold")
+
+# game over color config
 GAME_OVER_FONT = ("Helvetica", 48, "bold")
 GAME_OVER_FONT_COLOR = "#ffffff"
 WINNER_BG = "#ffcc00"
 LOSER_BG = "#a39489"
-HIGH_SCORE_FONT = ("Helvetica",20,"bold")
 
-highScore = "highscore.txt"
-
+# cell background colors
 CELL_COLORS = {
     2: "#fcefe6",
     4: "#f2e8cb",
@@ -24,6 +32,7 @@ CELL_COLORS = {
     2048: "#fad74d"
 }
 
+# cell data colors
 CELL_NUMBER_COLORS = {
     2: "#695c57",
     4: "#695c57",
@@ -38,6 +47,7 @@ CELL_NUMBER_COLORS = {
     2048: "#ffffff"
 }
 
+# cell data fonts
 CELL_NUMBER_FONTS = {
     2: ("Helvetica", 55, "bold"),
     4: ("Helvetica", 55, "bold"),
