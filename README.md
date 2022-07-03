@@ -14,12 +14,14 @@
  - Current score live display
 
 <hr />
-### Technologies used
+
+### Technologies used=
 
 - Tkinter
 - PyGame
 
 <hr />
+
 ### Requirements
 
 - Python v3 (pref 3.8.10)
@@ -43,6 +45,7 @@ foo@bar:~/2048$ python3 main.py
 foo@bar:~/2048$ python3 main.py --dim 8
 ```
 <hr />
+
 ### Developed by
 [Sanket Chaudhari](https://github.com/sanket190/)
 [Rushikesh Kundkar](https://github.com/RRkundkar777)
