@@ -1,9 +1,5 @@
-# ngrid
+# nmgrid
 ## The classic 2048 number game
-
-<div>
-    <img src="screenshots/1.png" style="align:center;" />
-</div>
 
 ### Features
  - Play with variable grid dimensions
@@ -20,9 +16,17 @@
 ## How to play
 - Install via pip
 ```shell
-python3 -m pip install ngrid
+python3 -m pip install nmgrid
 ```
-- Download it from the [PyPI Link]()
+- Download it from the [PyPI Link](https://pypi.org/project/nmgrid/)
+- Run the game using Python
+```shell
+python3 -m nmgrid
+```
+- Run with mutliple dimensions
+```shell
+python3 -m nmgrid --dim 7
+```
 
 ## Developed by
 [Rushikesh Kundkar](https://github.com/RRkundkar777)
