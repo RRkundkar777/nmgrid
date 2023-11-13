@@ -1,8 +1,27 @@
-# Importing required modules
+#    Copyright 2023 Rushikesh Kundkar
+
+#    Licensed under the Apache License, Version 2.0 (the "License");
+#    you may not use this file except in compliance with the License.
+#    You may obtain a copy of the License at
+
+#        http://www.apache.org/licenses/LICENSE-2.0
+
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS,
+#    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#    See the License for the specific language governing permissions and
+#    limitations under the License.
+
+
 from operator import is_
-import random,pygame,sys
+import os
+import random,sys
 import tkinter as tk
 import config as cfg
+
+# Suppress pygame welcome prompt
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
+import pygame
 
 # parse command arguments
 def parse_args():
@@ -371,6 +390,9 @@ class Game(tk.Frame):
                     file.write("\n")
                     is_game_over = True
         
+# Display the copyright text
+def copyright():
+    print(cfg.COPYRIGHT)
 
 # Driver Code
 def main():
@@ -378,6 +400,7 @@ def main():
 
 # Running the Game
 if __name__ == "__main__":
+    copyright()
     highscorefile = open(cfg.highScore,"a")
     highscorefile.close()
     main()
