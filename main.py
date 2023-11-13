@@ -61,11 +61,6 @@ class Game(tk.Frame):
         self.master.bind("<Up>", self.up)
         self.master.bind("<Down>", self.down)
 
-        # Playing background Music
-        pygame.mixer.init()
-        pygame.mixer.music.load("music.mp3")
-        pygame.mixer.music.play()
-
         self.mainloop()
 
     # UI related functions 
@@ -101,7 +96,7 @@ class Game(tk.Frame):
         # Score header
         score_frame = tk.Frame(self)
         # Placing the score frame
-        score_frame.place(relx=0.5, x=100,y=40, anchor="center")
+        score_frame.place(relx=0.5, x=0,y=40, anchor="center")
         # Title label
         tk.Label(
             score_frame,
@@ -112,31 +107,6 @@ class Game(tk.Frame):
         # Score Label
         self.score_label = tk.Label(score_frame, text="0", font=cfg.SCORE_FONT)
         self.score_label.grid(row=1)
-
-        # High score header
-        high_score_frame = tk.Frame(self)
-        # placing the high score frame
-        high_score_frame.place(relx=0.5, x=-100,y=40, anchor="center")
-        # Title Label
-        tk.Label(
-            high_score_frame,
-            text="High Score",
-            font=cfg.SCORE_LABEL_FONT
-        ).grid(row=0)
-
-        # Storing the Score into txt file with winning text
-        with open(cfg.highScore, 'r') as file:
-            highscore = 0
-            tempscore = file.readline()
-            while(tempscore != ''):
-                zscore = int(tempscore)
-                if(zscore > highscore): 
-                    highscore = zscore
-                tempscore = file.readline()
-
-        # High Score Label
-        self.high_score_label = tk.Label(high_score_frame, text=highscore, font=cfg.HIGH_SCORE_FONT)
-        self.high_score_label.grid(row=1)
 
 
     # Sets value of any two random cells to 2,initializes score and logical matrix  
@@ -359,13 +329,6 @@ class Game(tk.Frame):
                 bg=cfg.WINNER_BG,
                 fg=cfg.GAME_OVER_FONT_COLOR,
                 font=cfg.GAME_OVER_FONT).pack()
-
-            # storing the score
-            with open(cfg.highScore, 'a') as file:
-                if(is_game_over != True):
-                    file.write(str(self.score))
-                    file.write("\n")
-                    is_game_over = True
                 
 
         # Else if no move exist --> Show Game Over
@@ -382,13 +345,7 @@ class Game(tk.Frame):
                 bg=cfg.LOSER_BG,
                 fg=cfg.GAME_OVER_FONT_COLOR,
                 font=cfg.GAME_OVER_FONT).pack()
-
-            # storing the score
-            with open(cfg.highScore, 'a') as file:
-                if(is_game_over != True):
-                    file.write(str(self.score))
-                    file.write("\n")
-                    is_game_over = True
+            
         
 # Display the copyright text
 def copyright():
@@ -401,6 +358,4 @@ def main():
 # Running the Game
 if __name__ == "__main__":
     copyright()
-    highscorefile = open(cfg.highScore,"a")
-    highscorefile.close()
     main()
